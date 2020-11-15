@@ -1,0 +1,18 @@
+<h1> This is Event home page pages</h1>
+
+
+{% for event in events %}
+
+<h1> {{ event.eventname }}</h1>
+<h1>{{event.eventdescription}}</h1>
+<h1>{{event.eventtype}}</h1>
+<h1>{{event.eventlocation}}</h1>
+<h1>{{event.eventorganizer}}</h1>
+<h1>{{event.starttime}}</h1>
+<h1>{{event.endtime}}</h1>
+
+{% endfor %}
+
+
+<a href="newevent">Add New Event</a>
+
