@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<h1> This is Event admin configuration pages</h1>
+
+
+<div class="container">
+    {% if messages %}
+        <div class="messages">
+            {% for message in messages %}
+            <div {% if message.tags %} class="{{ message.tags }}" {% endif %}>{{ message }}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            {% endfor %}
+        </div>
+        {% endif %}
+    <div class="row">
+      <div class="col-4">
+        
+        {% for type in eventtype %}
+        {{ type }}
+        <br>
+    {% endfor %}    
+
+    <br>
+    <a class="btn btn-primary mb-3 " href="{% url 'event:eventtypeadd' %}" role="button">Add <i class="fas fa-plus"></i></a>
+
+      </div>
+      <div class="col-4">
+        
+        {% for orgaizer in orgaizers %}
+        {{ orgaizer }}
+        <br>
+    {% endfor %}    
+
+    <br>
+    <a class="btn btn-primary mb-3 " href="{% url 'event:organizeradd' %}" role="button">Add <i class="fas fa-plus"></i></a>
+
+      </div>
+      <div class="col-4">
+        
+        {% for location in locations %}
+        {{ location }}
+        <br>
+    {% endfor %}    
+
+    <br>
+    <a class="btn btn-primary mb-3 " href="{% url 'event:locationadd' %}" role="button">Add <i class="fas fa-plus"></i></a>
+
+      </div>
+    </div>
+  </div>
+
+
+{% if request.user.is_authenticated %}
+    <a href="{% url 'event:newevent' %}">Add New Event</a>
+{% endif%}
+
+{% endblock content %}
+

@@ -1,7 +1,24 @@
-New Event page 
+{% extends 'base.html' %}
 
-<form method="POST" class="post-form">  
-    {% csrf_token %}  
-    {{ form.as_p }}  
-    <button type="submit" class="save btn btn-default">Submit</button>  
-</form>  
+{% block content %}
+<div class="container">
+
+    New Event page 
+
+    <form method="POST" class="form-horizontal">  
+        {% csrf_token %}  
+        {% for field in form %}
+        <div class="form-group">
+            {{ field.errors }}
+            {{ field.label_tag }}
+            {{ field }}
+        </div>
+        {% endfor %}
+        <button type="submit" class="save btn btn-default">Submit</button>  
+    </form>  
+
+</div>
+{% endblock%}
+
+
+                

@@ -1,18 +1,46 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
 <h1> This is Event home page pages</h1>
 
 
-{% for event in events %}
+<table class="table table-hover table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Event Name</th>
+        <th scope="col">Description</th>
+        <th scope="col">Location</th>
+        <th scope="col">Orgainizer</th>
+        <th scope="col">Start time</th>
+        <th scope="col">End Time</th>
+      </tr>
+    </thead>
+    <tbody>
+        {% for event in events %}
+      <tr>
+        <th scope="row">{{ forloop.counter }}</th>
+        <td>{{ event.eventname }}</td>
+        <td>{{event.eventdescription}}</td>
+        <td>{{event.eventlocation}}</td>
+        <td>{{event.eventorganizer}}</td>
+        <td>{{event.startTime}}</td>
+        <td>{{event.endTime}}</td>
+        <td>
+            <a href="{% url 'event:editEvent' event.id %}" class="mr-3" data-toggle="tooltip" data-placement="top"
+                        title="Edit"><i class="fas fa-pencil-alt float-right btn btn-primary btn-sm mr-1"></i></a>
+        </td>
+      </tr>
+      
+      {% endfor %}
+     
+    </tbody>
+  </table>
 
-<h1> {{ event.eventname }}</h1>
-<h1>{{event.eventdescription}}</h1>
-<h1>{{event.eventtype}}</h1>
-<h1>{{event.eventlocation}}</h1>
-<h1>{{event.eventorganizer}}</h1>
-<h1>{{event.starttime}}</h1>
-<h1>{{event.endtime}}</h1>
+{% if request.user.is_authenticated %}
+    <a href="newevent">Add New Event</a>
+{% endif%}
 
-{% endfor %}
-
-
-<a href="newevent">Add New Event</a>
+{% endblock content %}
 

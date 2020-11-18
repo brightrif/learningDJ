@@ -17,8 +17,14 @@ Including another URLconf
 from django.urls import include, path
 from event import views
 
+app_name = 'event'
+
 urlpatterns = [
     path('', views.eventhome, name='eventhome'),
     path ('newevent/', views.newevent, name='newevent'),
-
+    path('<int:event_id>/edit/', views.editEvent, name='editEvent'),
+    path ('eventmanager/', views.eventManager, name='eventmanager'),
+    path ('eventtypeadd/', views.addEventType, name='eventtypeadd'),
+    path ('organizeradd/', views.addOrganizer, name='organizeradd'),
+    path ('locationadd/', views.addLocation, name='locationadd'),
 ]

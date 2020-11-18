@@ -29,6 +29,7 @@ class EditPollForm(forms.ModelForm):
 
 class ChoiceAddForm(forms.ModelForm):
     class Meta:
+    
         model = Choice
         fields = ['choice_text', ]
         widgets = {
